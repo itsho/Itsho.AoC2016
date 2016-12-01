@@ -16,10 +16,20 @@ namespace Itsho.AoC2016.Solutions
 
         private static readonly HashSet<Point> _lstVistedPoints = new HashSet<Point>();
 
-        public static int GetDistanceFromStartingPoint(string p_strRiddleSource, out int? p_intDistanceFromAlreadyVisit)
+        public static int GetPart1DistanceFromStartingPoint(string p_strRiddleSource)
+        {
+            return Solve(p_strRiddleSource, false);
+        }
+
+        public static int GetPart2DistanceFromAlreadyVisit(string p_strRiddleSource)
+        {
+            return Solve(p_strRiddleSource, true);
+        }
+
+        private static int Solve(string p_strRiddleSource, bool p_blnIsPart2)
         {
             _lstVistedPoints.Clear();
-            p_intDistanceFromAlreadyVisit = null;
+            int intDistanceFromAlreadyVisitResult = 0;
             var pntCurrentLoc = new Point();
             var enmCurrCompassDirection = DirectionEnum.North;
 
@@ -47,14 +57,14 @@ namespace Itsho.AoC2016.Solutions
                 // get destination
                 var pntDestination = GetNewLocation(pntCurrentLoc, enmCurrCompassDirection, intDistance);
 
-                if (!blnAlreadyVisitFound)
+                if (p_blnIsPart2 && !blnAlreadyVisitFound)
                 {
                     // add visits for all steps in-between
                     var intDistanceFromAlreadyVisit = AddVisits(pntCurrentLoc, intDistance, enmCurrCompassDirection);
                     if (intDistanceFromAlreadyVisit != null)
                     {
                         blnAlreadyVisitFound = true;
-                        p_intDistanceFromAlreadyVisit = intDistanceFromAlreadyVisit;
+                        intDistanceFromAlreadyVisitResult = intDistanceFromAlreadyVisit.Value;
                     }
                 }
 
@@ -62,6 +72,11 @@ namespace Itsho.AoC2016.Solutions
                 pntCurrentLoc = pntDestination;
             }
 
+            if (p_blnIsPart2)
+            {
+                return intDistanceFromAlreadyVisitResult;
+            }
+            // part1 - get distance from
             return Math.Abs(pntCurrentLoc.X) + Math.Abs(pntCurrentLoc.Y);
         }
 

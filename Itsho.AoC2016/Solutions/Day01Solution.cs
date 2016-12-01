@@ -1,22 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+using System.Drawing;
 
 namespace Itsho.AoC2016.Solutions
 {
     public static class Day01Solution
     {
-        public static int GetDistanceFromStartingPoint(string p_strRiddleSource, out int? p_intDistanceFromTwiceVisit)
+        private enum DirectionEnum
         {
-            p_intDistanceFromTwiceVisit = null;
-            //string[] arrDirections = { "north", "west", "south", "east" };
-            var pntCurrentLoc = new VisitLocation(0, 0, 0);
-            var intCurrCompassDirection = 0;
+            North = 0,
+            East = 1,
+            South = 2,
+            West = 3
+        }
 
-            var lstVists = new List<VisitLocation>();
-            lstVists.Add(pntCurrentLoc);
+        private static readonly HashSet<Point> _lstVistedPoints = new HashSet<Point>();
+
+        public static int GetDistanceFromStartingPoint(string p_strRiddleSource, out int? p_intDistanceFromAlreadyVisit)
+        {
+            _lstVistedPoints.Clear();
+            p_intDistanceFromAlreadyVisit = null;
+            var pntCurrentLoc = new Point();
+            var enmCurrCompassDirection = DirectionEnum.North;
+
+            _lstVistedPoints.Add(pntCurrentLoc);
             var arrCommands = p_strRiddleSource.Split(' ');
+            bool blnAlreadyVisitFound = false;
+
             foreach (var strCommand in arrCommands)
             {
                 var strDirection = strCommand[0];
@@ -25,23 +35,27 @@ namespace Itsho.AoC2016.Solutions
                 {
                     // North(0) + 1 == West(1)
                     // East(3) +1 == North(0)
-                    intCurrCompassDirection = (intCurrCompassDirection + 1) % 4;
+                    enmCurrCompassDirection = (DirectionEnum)(((int)enmCurrCompassDirection + 1) % 4);
                 }
                 else
                 {
                     // North(0) - 1 == East(3)
                     // East(3) -1 == South(2)
-                    intCurrCompassDirection = (intCurrCompassDirection + 3) % 4;
+                    enmCurrCompassDirection = (DirectionEnum)((int)(enmCurrCompassDirection + 3) % 4);
                 }
 
                 // get destination
-                var pntDestination = GetNewLocation(pntCurrentLoc, intCurrCompassDirection, intDistance, lstVists);
+                var pntDestination = GetNewLocation(pntCurrentLoc, enmCurrCompassDirection, intDistance);
 
-                // add visits in all points in-between
-                var intTempDistanceFromTwiceVisit = AddVisits(pntCurrentLoc, intDistance, intCurrCompassDirection, lstVists);
-                if (intTempDistanceFromTwiceVisit != null)
+                if (!blnAlreadyVisitFound)
                 {
-                    p_intDistanceFromTwiceVisit = intTempDistanceFromTwiceVisit;
+                    // add visits for all steps in-between
+                    var intDistanceFromAlreadyVisit = AddVisits(pntCurrentLoc, intDistance, enmCurrCompassDirection);
+                    if (intDistanceFromAlreadyVisit != null)
+                    {
+                        blnAlreadyVisitFound = true;
+                        p_intDistanceFromAlreadyVisit = intDistanceFromAlreadyVisit;
+                    }
                 }
 
                 // go to destination
@@ -51,71 +65,53 @@ namespace Itsho.AoC2016.Solutions
             return Math.Abs(pntCurrentLoc.X) + Math.Abs(pntCurrentLoc.Y);
         }
 
-        private static VisitLocation GetNewLocation(VisitLocation p_pntLoc, int p_intCurrCompassDirection, int p_intDistance, List<VisitLocation> p_lstPreviousVisits)
+        private static Point GetNewLocation(Point p_pntLoc, DirectionEnum p_enmCurrCompassDirection, int p_intDistance)
         {
-            var pntResult = new VisitLocation(p_lstPreviousVisits.Count, p_pntLoc.X, p_pntLoc.Y);
+            var pntResult = new Point(p_pntLoc.X, p_pntLoc.Y);
 
-            switch (p_intCurrCompassDirection)
+            switch (p_enmCurrCompassDirection)
             {
-                case 0:
+                // 0
+                case DirectionEnum.North:
                     pntResult.X += p_intDistance;
                     break;
 
-                case 1:
+                // 1
+                case DirectionEnum.East:
                     pntResult.Y += p_intDistance;
                     break;
 
-                case 2:
+                //2
+                case DirectionEnum.South:
                     pntResult.X -= p_intDistance;
                     break;
 
-                case 3:
+                //3
+                case DirectionEnum.West:
                     pntResult.Y -= p_intDistance;
                     break;
             }
             return pntResult;
         }
 
-        private static int? AddVisits(VisitLocation p_pntSource, int p_intSteps, int p_intCurrCompassDirection, List<VisitLocation> p_lstPreviousVisits)
+        private static int? AddVisits(Point p_pntSource, int p_intSteps, DirectionEnum p_enmCurrCompassDirection)
         {
-            int? intInnerDistanceFromTwiceVisit = null;
-
-            // we skip first location and include LAST step
+            // we SKIP the FIRST location but INCLUDE LAST step
             // the single first location is added manually
             for (int intCurrVisit = 1; intCurrVisit <= p_intSteps; intCurrVisit++)
             {
-                var pntVisitDuringJurney = GetNewLocation(p_pntSource, p_intCurrCompassDirection, intCurrVisit, p_lstPreviousVisits);
-                p_lstPreviousVisits.Add(pntVisitDuringJurney);
+                var pntVisitDuringJurney = GetNewLocation(p_pntSource, p_enmCurrCompassDirection, intCurrVisit);
 
-                // no need to add destination as visit point since we already did it as part of AddVisit
-                if (intInnerDistanceFromTwiceVisit == null)
+                // if found location already visited
+                if (_lstVistedPoints.Contains(pntVisitDuringJurney))
                 {
-                    foreach (var pntVisit in p_lstPreviousVisits)
-                    {
-                        if (p_lstPreviousVisits.Any(p => p.ID != pntVisit.ID && p.X == pntVisit.X && p.Y == pntVisit.Y))
-                        {
-                            intInnerDistanceFromTwiceVisit = Math.Abs(pntVisit.X) + Math.Abs(pntVisit.Y);
-                            break;
-                        }
-                    }
+                    return Math.Abs(pntVisitDuringJurney.X) + Math.Abs(pntVisitDuringJurney.Y);
                 }
-            }
-            return intInnerDistanceFromTwiceVisit;
-        }
 
-        [DebuggerDisplay("{ID} {X} {Y}")]
-        private class VisitLocation
-        {
-            public VisitLocation(int p_id, int p_x, int p_y)
-            {
-                ID = p_id;
-                X = p_x;
-                Y = p_y;
+                // otherwise, add to list
+                _lstVistedPoints.Add(pntVisitDuringJurney);
             }
-
-            public int ID { get; private set; }
-            public int X { get; set; }
-            public int Y { get; set; }
+            return null;
         }
     }
 }

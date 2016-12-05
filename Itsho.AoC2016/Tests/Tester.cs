@@ -1,11 +1,11 @@
-﻿using System.Diagnostics;
-using Itsho.AoC2016.Solutions;
+﻿using Itsho.AoC2016.Solutions;
+using System.Diagnostics;
 
 namespace Itsho.AoC2016.Tests
 {
     public static class Tester
     {
-        public static void TestDay1Part1()
+        public static void TestDay01Part1()
         {
             var intPart1 = Day01Solution.GetPart1DistanceFromStartingPoint("R5, L5, R5, R3");
             NUnit.Framework.Assert.AreEqual(12, intPart1);
@@ -29,7 +29,7 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual(4, intPart1);
         }
 
-        public static void TestDay1Part2()
+        public static void TestDay01Part2()
         {
             var intPart2 = Day01Solution.GetPart2DistanceFromAlreadyVisit("R8, R4, R4, R8");
             NUnit.Framework.Assert.AreEqual(4, intPart2);
@@ -41,7 +41,7 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual(2, intPart2);
         }
 
-        public static void TestDay2Part1()
+        public static void TestDay02Part1()
         {
             var strPart1 = Day02Solution.GetPart1(new[]
             {
@@ -54,7 +54,7 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual("1985", strPart1);
         }
 
-        public static void TestDay2Part2()
+        public static void TestDay02Part2()
         {
             var strPart2 = Day02Solution.GetPart2(new[]
             {
@@ -66,7 +66,7 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual("5DB3", strPart2);
         }
 
-        public static void TestDay3Part1()
+        public static void TestDay03Part1()
         {
             NUnit.Framework.Assert.AreEqual(false, Day03Solution.IsValidTriangle("5 10 25"));
             NUnit.Framework.Assert.AreEqual(true, Day03Solution.IsValidTriangle("5  6  7"));
@@ -87,7 +87,7 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual(true, Day03Solution.IsValidTriangle("579  920  687"));
         }
 
-        public static void TestDay3Part2()
+        public static void TestDay03Part2()
         {
             var arrToTest = new[]
             {
@@ -102,7 +102,7 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual(6, Day03Solution.GetPart2TotalPossibleTrianglesVertically(arrToTest));
         }
 
-        public static void TestDay4Part1()
+        public static void TestDay04Part1()
         {
             NUnit.Framework.Assert.AreEqual(true, Day04Solution.IsRealRoom("aaaaa-bbb-z-y-x-123[abxyz]"));
             NUnit.Framework.Assert.AreEqual(true, Day04Solution.IsRealRoom("a-b-c-d-e-f-g-h-987[abcde]"));
@@ -110,13 +110,12 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual(false, Day04Solution.IsRealRoom("totally-real-room-200[decoy]"));
         }
 
-        public static void TestDay4Part2()
+        public static void TestDay04Part2()
         {
             NUnit.Framework.Assert.AreEqual("very encrypted name", Day04Solution.DecryptRoomName("qzmt-zixmtkozy-ivhz-343"));
         }
 
-
-        public static void TestDay5Part1()
+        public static void TestDay05Part1()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -125,13 +124,31 @@ namespace Itsho.AoC2016.Tests
             NUnit.Framework.Assert.AreEqual("18F47A30", strPass);
         }
 
-        public static void TestDay5Part2()
+        public static void TestDay05Part2()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
             var strPass = Day05Solution.GetPart2("abc");
             sw.Stop();
             NUnit.Framework.Assert.AreEqual("05ACE8E3", strPass);
+        }
+
+        public static void TestDay06Part1()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            var strPass = Day06Solution.GetPart1("");
+            sw.Stop();
+            NUnit.Framework.Assert.AreEqual("", strPass);
+        }
+
+        public static void TestDay06Part2()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            var strPass = Day06Solution.GetPart2("");
+            sw.Stop();
+            NUnit.Framework.Assert.AreEqual("", strPass);
         }
     }
 }

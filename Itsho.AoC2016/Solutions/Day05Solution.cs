@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Itsho.AoC2016.Solutions
 {
@@ -62,57 +61,6 @@ namespace Itsho.AoC2016.Solutions
                     return strPasswordTemp;
                 }
             }
-            var strPassword = String.Join("", arrPassword);
-
-            return strPassword;
-        }
-
-        public static string GetPart2MultiThread(string p_strRiddleSource)
-        {
-            const char EMPTY_CHAR = ' ';
-
-            char[] arrPassword = new char[PASSWORD_LENGTH] { EMPTY_CHAR, EMPTY_CHAR, EMPTY_CHAR, EMPTY_CHAR, EMPTY_CHAR, EMPTY_CHAR, EMPTY_CHAR, EMPTY_CHAR };
-
-            var range = Enumerable.Range(0, int.MaxValue / 100).ToArray();
-
-            Parallel.ForEach(range,
-                (value, loopState, index) =>
-                {
-                    if (loopState.IsStopped || loopState.IsExceptional)
-                    {
-                        return;
-                    }
-
-                    var strHash = CreateMD5(p_strRiddleSource + value);
-                    if (strHash.StartsWith(HASH_TO_FIND))
-                    {
-                        const int POSITION_CHAR = 5;
-
-                        if ((char)strHash[POSITION_CHAR] < '0' ||
-                            (char)strHash[POSITION_CHAR] > '7')
-                        {
-                            // move to next padding
-                            return;
-                        }
-
-                        int intPosition = int.Parse(strHash[POSITION_CHAR].ToString());
-                        char chrValue = strHash[6];
-
-                        // only if placeholder IS empty
-                        if (arrPassword[intPosition] == EMPTY_CHAR)
-                        {
-                            // use new char
-                            arrPassword[intPosition] = chrValue;
-                        }
-                    }
-                    var strPasswordTemp = String.Join("", arrPassword);
-                    if (strPasswordTemp.Length == 8 && !strPasswordTemp.Contains(EMPTY_CHAR))
-                    {
-                        loopState.Break();
-                        return;// strPasswordTemp;
-                    }
-                });
-
             var strPassword = String.Join("", arrPassword);
 
             return strPassword;

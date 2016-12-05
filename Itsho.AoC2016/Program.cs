@@ -15,8 +15,8 @@ namespace Itsho.AoC2016
             Console.WriteLine("------ Day 1 ------");
 
             Console.WriteLine("Tests...");
-            Tester.TestDay1Part1();
-            Tester.TestDay1Part2();
+            Tester.TestDay01Part1();
+            Tester.TestDay01Part2();
 
             Console.WriteLine("Actual Run...");
             var strInputDay01 = File.ReadAllLines(@"RiddleSources\DAY01.txt")[0];
@@ -29,8 +29,8 @@ namespace Itsho.AoC2016
 
             Console.WriteLine("------ Day 2 ------");
             Console.WriteLine("Tests...");
-            Tester.TestDay2Part1();
-            Tester.TestDay2Part2();
+            Tester.TestDay02Part1();
+            Tester.TestDay02Part2();
 
             Console.WriteLine("Actual Run...");
 
@@ -44,8 +44,8 @@ namespace Itsho.AoC2016
 
             Console.WriteLine("------ Day 3 ------");
             Console.WriteLine("Tests...");
-            Tester.TestDay3Part1();
-            Tester.TestDay3Part2();
+            Tester.TestDay03Part1();
+            Tester.TestDay03Part2();
 
             Console.WriteLine("Actual Run...");
 
@@ -59,8 +59,8 @@ namespace Itsho.AoC2016
 
             Console.WriteLine("------ Day 4 ------");
             Console.WriteLine("Tests...");
-            Tester.TestDay4Part1();
-            Tester.TestDay4Part2();
+            Tester.TestDay04Part1();
+            Tester.TestDay04Part2();
 
             Console.WriteLine("Actual Run...");
 
@@ -74,8 +74,8 @@ namespace Itsho.AoC2016
 
             Console.WriteLine("------ Day 5 ------");
             Console.WriteLine("Tests...");
-            Tester.TestDay5Part1();
-            Tester.TestDay5Part2();
+            Tester.TestDay05Part1();
+            Tester.TestDay05Part2();
 
             Console.WriteLine("Actual Run...");
 
@@ -86,6 +86,24 @@ namespace Itsho.AoC2016
 
             #endregion Day 05
 
+            /*
+
+            #region Day 06
+
+            Console.WriteLine("------ Day 6 ------");
+            Console.WriteLine("Tests...");
+            Tester.TestDay06Part1();
+            Tester.TestDay06Part2();
+
+            Console.WriteLine("Actual Run...");
+
+            var strInputDay06 = File.ReadAllLines(@"RiddleSources\DAY06.txt")[0];
+            ConsoleWriteLineTimed("Day6 part1 ", () => Day06Solution.GetPart1(strInputDay06));
+            ConsoleWriteLineTimed("Day6 part2 ", () => Day06Solution.GetPart2(strInputDay06));
+
+            #endregion Day 06
+
+            */
             Console.ReadKey();
         }
 

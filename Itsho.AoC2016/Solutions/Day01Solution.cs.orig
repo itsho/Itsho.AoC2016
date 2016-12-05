@@ -7,6 +7,20 @@ namespace Itsho.AoC2016.Solutions
     public static class Day01Solution
     {
         private enum DirectionEnum
+<<<<<<< HEAD
+        {
+            North = 0,
+            West = 1,
+            South = 2,
+            East = 3
+        }
+
+        public static int GetDistanceFromStartingPoint(string p_strRiddleSource, out int? p_intDistanceFromTwiceVisit)
+        {
+            p_intDistanceFromTwiceVisit = null;
+            //string[] arrDirections = { "north", "west", "south", "east" };
+            var pntCurrentLoc = new VisitLocation(0, 0, 0);
+=======
         {
             North = 0,
             East = 1,
@@ -31,6 +45,7 @@ namespace Itsho.AoC2016.Solutions
             _lstVistedPoints.Clear();
             int intDistanceFromAlreadyVisitResult = 0;
             var pntCurrentLoc = new Point();
+>>>>>>> github_aoc2016/master
             var enmCurrCompassDirection = DirectionEnum.North;
 
             _lstVistedPoints.Add(pntCurrentLoc);
@@ -51,6 +66,17 @@ namespace Itsho.AoC2016.Solutions
                 {
                     // North(0) - 1 == East(3)
                     // East(3) -1 == South(2)
+<<<<<<< HEAD
+                    enmCurrCompassDirection = (DirectionEnum)(((int)enmCurrCompassDirection + 3) % 4);
+                }
+
+                // get destination
+                var pntDestination = GetNewLocation(pntCurrentLoc, enmCurrCompassDirection, intDistance, lstVists);
+
+                // add visits in all points in-between
+                var intTempDistanceFromTwiceVisit = AddVisits(pntCurrentLoc, intDistance, enmCurrCompassDirection, lstVists);
+                if (intTempDistanceFromTwiceVisit != null)
+=======
                     enmCurrCompassDirection = (DirectionEnum)((int)(enmCurrCompassDirection + 3) % 4);
                 }
 
@@ -58,6 +84,7 @@ namespace Itsho.AoC2016.Solutions
                 var pntDestination = GetNewLocation(pntCurrentLoc, enmCurrCompassDirection, intDistance);
 
                 if (p_blnIsPart2 && !blnAlreadyVisitFound)
+>>>>>>> github_aoc2016/master
                 {
                     // add visits for all steps in-between
                     var intDistanceFromAlreadyVisit = AddVisits(pntCurrentLoc, intDistance, enmCurrCompassDirection);
@@ -80,49 +107,87 @@ namespace Itsho.AoC2016.Solutions
             return Math.Abs(pntCurrentLoc.X) + Math.Abs(pntCurrentLoc.Y);
         }
 
+<<<<<<< HEAD
+        private static VisitLocation GetNewLocation(VisitLocation p_pntLoc, DirectionEnum p_enmCurrCompassDirection, int p_intDistance, List<VisitLocation> p_lstPreviousVisits)
+=======
         private static Point GetNewLocation(Point p_pntLoc, DirectionEnum p_enmCurrCompassDirection, int p_intDistance)
+>>>>>>> github_aoc2016/master
         {
             var pntResult = new Point(p_pntLoc.X, p_pntLoc.Y);
 
             switch (p_enmCurrCompassDirection)
             {
+<<<<<<< HEAD
+=======
                 // 0
+>>>>>>> github_aoc2016/master
                 case DirectionEnum.North:
                     pntResult.X += p_intDistance;
                     break;
 
+<<<<<<< HEAD
+                case DirectionEnum.West:
+                    pntResult.Y += p_intDistance;
+                    break;
+
+=======
                 // 1
                 case DirectionEnum.East:
                     pntResult.Y += p_intDistance;
                     break;
 
                 //2
+>>>>>>> github_aoc2016/master
                 case DirectionEnum.South:
                     pntResult.X -= p_intDistance;
                     break;
 
+<<<<<<< HEAD
+                case DirectionEnum.East:
+=======
                 //3
                 case DirectionEnum.West:
+>>>>>>> github_aoc2016/master
                     pntResult.Y -= p_intDistance;
                     break;
             }
             return pntResult;
         }
 
+<<<<<<< HEAD
+        private static int? AddVisits(VisitLocation p_pntSource, int p_intSteps, DirectionEnum p_enmCurrCompassDirection, List<VisitLocation> p_lstPreviousVisits)
+=======
         private static int? AddVisits(Point p_pntSource, int p_intSteps, DirectionEnum p_enmCurrCompassDirection)
+>>>>>>> github_aoc2016/master
         {
             // we SKIP the FIRST location but INCLUDE LAST step
             // the single first location is added manually
             for (int intCurrVisit = 1; intCurrVisit <= p_intSteps; intCurrVisit++)
             {
+<<<<<<< HEAD
+                var pntVisitDuringJurney = GetNewLocation(p_pntSource, p_enmCurrCompassDirection, intCurrVisit, p_lstPreviousVisits);
+                p_lstPreviousVisits.Add(pntVisitDuringJurney);
+=======
                 var pntVisitDuringJurney = GetNewLocation(p_pntSource, p_enmCurrCompassDirection, intCurrVisit);
+>>>>>>> github_aoc2016/master
 
                 // if found location already visited
                 if (_lstVistedPoints.Contains(pntVisitDuringJurney))
                 {
-                    return Math.Abs(pntVisitDuringJurney.X) + Math.Abs(pntVisitDuringJurney.Y);
+<<<<<<< HEAD
+                    foreach (var pntVisit in p_lstPreviousVisits)
+                    {
+                        if (p_lstPreviousVisits.Any(p => p.ID != pntVisit.ID && 
                                                             p.X == pntVisit.X && 
                                                             p.Y == pntVisit.Y))
+                        {
+                            intInnerDistanceFromTwiceVisit = Math.Abs(pntVisit.X) + Math.Abs(pntVisit.Y);
+                            break;
+                        }
+                    }
+=======
+                    return Math.Abs(pntVisitDuringJurney.X) + Math.Abs(pntVisitDuringJurney.Y);
+>>>>>>> github_aoc2016/master
                 }
 
                 // otherwise, add to list

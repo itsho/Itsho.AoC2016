@@ -70,6 +70,22 @@ namespace Itsho.AoC2016
 
             #endregion Day 04
 
+            #region Day 05
+
+            Console.WriteLine("------ Day 5 ------");
+            Console.WriteLine("Tests...");
+            Tester.TestDay5Part1();
+            Tester.TestDay5Part2();
+
+            Console.WriteLine("Actual Run...");
+
+            var strInputDay05 = File.ReadAllLines(@"RiddleSources\DAY05.txt")[0];
+            ConsoleWriteLineTimed("Day5 part1 ", () => Day05Solution.GetPart1(strInputDay05));
+            ConsoleWriteLineTimed("Day5 part2 ", () => Day05Solution.GetPart2(strInputDay05));
+            Console.WriteLine("We can't use Multithread since password generator got to be sequintal... :-(");
+
+            #endregion Day 05
+
             Console.ReadKey();
         }
 

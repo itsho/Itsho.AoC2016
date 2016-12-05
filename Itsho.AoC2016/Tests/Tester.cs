@@ -1,4 +1,5 @@
-﻿using Itsho.AoC2016.Solutions;
+﻿using System.Diagnostics;
+using Itsho.AoC2016.Solutions;
 
 namespace Itsho.AoC2016.Tests
 {
@@ -112,6 +113,25 @@ namespace Itsho.AoC2016.Tests
         public static void TestDay4Part2()
         {
             NUnit.Framework.Assert.AreEqual("very encrypted name", Day04Solution.DecryptRoomName("qzmt-zixmtkozy-ivhz-343"));
+        }
+
+
+        public static void TestDay5Part1()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            var strPass = Day05Solution.GetPart1("abc");
+            sw.Stop();
+            NUnit.Framework.Assert.AreEqual("18F47A30", strPass);
+        }
+
+        public static void TestDay5Part2()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            var strPass = Day05Solution.GetPart2("abc");
+            sw.Stop();
+            NUnit.Framework.Assert.AreEqual("05ACE8E3", strPass);
         }
     }
 }

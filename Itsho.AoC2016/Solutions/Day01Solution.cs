@@ -121,8 +121,6 @@ namespace Itsho.AoC2016.Solutions
                 if (_lstVistedPoints.Contains(pntVisitDuringJurney))
                 {
                     return Math.Abs(pntVisitDuringJurney.X) + Math.Abs(pntVisitDuringJurney.Y);
-                                                            p.X == pntVisit.X && 
-                                                            p.Y == pntVisit.Y))
                 }
 
                 // otherwise, add to list

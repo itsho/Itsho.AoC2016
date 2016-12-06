@@ -186,5 +186,45 @@ enarar".Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyE
             sw.Stop();
             NUnit.Framework.Assert.AreEqual("advent", strPass);
         }
+
+        public static void TestDay07Part1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay07Part2()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay08Part1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay08Part2()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay09Part1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay09Part2()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay10Part1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void TestDay10Part2()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

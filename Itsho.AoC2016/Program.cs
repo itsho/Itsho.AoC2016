@@ -10,6 +10,8 @@ namespace Itsho.AoC2016
     {
         private static void Main(string[] args)
         {
+            /*
+
             #region Day 01
 
             Console.WriteLine("------ Day 1 ------");
@@ -100,6 +102,70 @@ namespace Itsho.AoC2016
             ConsoleWriteLineTimed("Day6 part2 ", () => Day06Solution.GetPart2(strInputDay06));
 
             #endregion Day 06
+            */
+
+            #region Day 07
+
+            Console.WriteLine("------ Day 7 ------");
+            Console.WriteLine("Tests...");
+            Tester.TestDay07Part1();
+            //Tester.TestDay07Part2();
+
+            Console.WriteLine("Actual Run...");
+
+            var strInputDay07 = File.ReadAllLines(@"RiddleSources\DAY07.txt");
+            ConsoleWriteLineTimed("Day7 part1 ", () => Day07Solution.GetPart1(strInputDay07));
+            //ConsoleWriteLineTimed("Day7 part2 ", () => Day07Solution.GetPart2(strInputDay07));
+
+            #endregion Day 07
+
+            /*
+            #region Day 08
+
+            Console.WriteLine("------ Day 8 ------");
+            Console.WriteLine("Tests...");
+            Tester.TestDay08Part1();
+            //Tester.TestDay08Part2();
+
+            Console.WriteLine("Actual Run...");
+
+            var strInputDay08 = File.ReadAllLines(@"RiddleSources\DAY08.txt");
+            ConsoleWriteLineTimed("Day8 part1 ", () => Day08Solution.GetPart1(strInputDay08));
+            //ConsoleWriteLineTimed("Day8 part2 ", () => Day08Solution.GetPart2(strInputDay08));
+
+            #endregion Day 08
+
+            #region Day 09
+
+            Console.WriteLine("------ Day 9 ------");
+            Console.WriteLine("Tests...");
+            Tester.TestDay09Part1();
+            //Tester.TestDay09Part2();
+
+            Console.WriteLine("Actual Run...");
+
+            var strInputDay09 = File.ReadAllLines(@"RiddleSources\DAY09.txt");
+            ConsoleWriteLineTimed("Day9 part1 ", () => Day09Solution.GetPart1(strInputDay09));
+            //ConsoleWriteLineTimed("Day9 part2 ", () => Day09Solution.GetPart2(strInputDay09));
+
+            #endregion Day 09
+
+            #region Day 10
+
+            Console.WriteLine("------ Day 10 ------");
+            Console.WriteLine("Tests...");
+            Tester.TestDay10Part1();
+            //Tester.TestDay10Part2();
+
+            Console.WriteLine("Actual Run...");
+
+            var strInputDay10 = File.ReadAllLines(@"RiddleSources\DAY10.txt");
+            ConsoleWriteLineTimed("Day10 part1 ", () => Day10Solution.GetPart1(strInputDay10));
+            //ConsoleWriteLineTimed("Day10 part2 ", () => Day10Solution.GetPart2(strInputDay10));
+
+            #endregion Day 10
+
+            */
 
             Console.ReadKey();
         }

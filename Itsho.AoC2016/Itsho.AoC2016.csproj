@@ -56,6 +56,10 @@
     <Compile Include="Solutions\Day06Solution.cs" />
     <Compile Include="Solutions\Day05Solution.cs" />
     <Compile Include="Solutions\Day04Solution.cs" />
+    <Compile Include="Solutions\Day10Solution.cs" />
+    <Compile Include="Solutions\Day09Solution.cs" />
+    <Compile Include="Solutions\Day08Solution.cs" />
+    <Compile Include="Solutions\Day07Solution.cs" />
     <Compile Include="Tests\Tester.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +68,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="RiddleSources\Day10.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RiddleSources\Day09.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RiddleSources\Day08.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RiddleSources\Day07.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="RiddleSources\Day06.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

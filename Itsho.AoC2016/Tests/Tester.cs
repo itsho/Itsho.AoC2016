@@ -1,4 +1,5 @@
-﻿using Itsho.AoC2016.Solutions;
+﻿using System;
+using Itsho.AoC2016.Solutions;
 using System.Diagnostics;
 
 namespace Itsho.AoC2016.Tests
@@ -136,19 +137,54 @@ namespace Itsho.AoC2016.Tests
         public static void TestDay06Part1()
         {
             Stopwatch sw = new Stopwatch();
+
+            var strTest =
+@"eedadn
+drvtee
+eandsr
+raavrd
+atevrs
+tsrnev
+sdttsa
+rasrtv
+nssdts
+ntnada
+svetve
+tesnvt
+vntsnd
+vrdear
+dvrsen
+enarar".Split(Environment.NewLine.ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
             sw.Start();
-            var strPass = Day06Solution.GetPart1("");
+            var strPass = Day06Solution.GetPart1(strTest);
             sw.Stop();
-            NUnit.Framework.Assert.AreEqual("", strPass);
+            NUnit.Framework.Assert.AreEqual("easter", strPass);
         }
 
         public static void TestDay06Part2()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            var strPass = Day06Solution.GetPart2("");
+            var strTest =
+@"eedadn
+drvtee
+eandsr
+raavrd
+atevrs
+tsrnev
+sdttsa
+rasrtv
+nssdts
+ntnada
+svetve
+tesnvt
+vntsnd
+vrdear
+dvrsen
+enarar".Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            var strPass = Day06Solution.GetPart2(strTest);
             sw.Stop();
-            NUnit.Framework.Assert.AreEqual("", strPass);
+            NUnit.Framework.Assert.AreEqual("advent", strPass);
         }
     }
 }

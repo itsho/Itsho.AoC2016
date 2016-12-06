@@ -86,8 +86,6 @@ namespace Itsho.AoC2016
 
             #endregion Day 05
 
-            /*
-
             #region Day 06
 
             Console.WriteLine("------ Day 6 ------");
@@ -97,13 +95,12 @@ namespace Itsho.AoC2016
 
             Console.WriteLine("Actual Run...");
 
-            var strInputDay06 = File.ReadAllLines(@"RiddleSources\DAY06.txt")[0];
+            var strInputDay06 = File.ReadAllLines(@"RiddleSources\DAY06.txt");
             ConsoleWriteLineTimed("Day6 part1 ", () => Day06Solution.GetPart1(strInputDay06));
             ConsoleWriteLineTimed("Day6 part2 ", () => Day06Solution.GetPart2(strInputDay06));
 
             #endregion Day 06
 
-            */
             Console.ReadKey();
         }
 

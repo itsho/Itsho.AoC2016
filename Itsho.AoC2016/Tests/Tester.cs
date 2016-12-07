@@ -1,5 +1,5 @@
-﻿using System;
-using Itsho.AoC2016.Solutions;
+﻿using Itsho.AoC2016.Solutions;
+using System;
 using System.Diagnostics;
 
 namespace Itsho.AoC2016.Tests
@@ -154,7 +154,7 @@ tesnvt
 vntsnd
 vrdear
 dvrsen
-enarar".Split(Environment.NewLine.ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
+enarar".Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             sw.Start();
             var strPass = Day06Solution.GetPart1(strTest);
             sw.Stop();
@@ -189,12 +189,18 @@ enarar".Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyE
 
         public static void TestDay07Part1()
         {
-            throw new NotImplementedException();
+            NUnit.Framework.Assert.AreEqual(1, Day07Solution.GetPart1(new[] { "abba[mnop]qrst" }));
+            NUnit.Framework.Assert.AreEqual(0, Day07Solution.GetPart1(new[] { "abcd[bddb]xyyx" }));
+            NUnit.Framework.Assert.AreEqual(0, Day07Solution.GetPart1(new[] { "aaaa[qwer]tyui" }));
+            NUnit.Framework.Assert.AreEqual(1, Day07Solution.GetPart1(new[] { "ioxxoj[asdfgh]zxcvbn" }));
         }
 
         public static void TestDay07Part2()
         {
-            throw new NotImplementedException();
+            NUnit.Framework.Assert.AreEqual(1, Day07Solution.GetPart2(new[] { "aba[bab]xyz" }));
+            NUnit.Framework.Assert.AreEqual(0, Day07Solution.GetPart2(new[] { "xyx[xyx]xyx" }));
+            NUnit.Framework.Assert.AreEqual(1, Day07Solution.GetPart2(new[] { "aaa[kek]eke" }));
+            NUnit.Framework.Assert.AreEqual(1, Day07Solution.GetPart2(new[] { "zazbz[bzb]cdb" }));
         }
 
         public static void TestDay08Part1()

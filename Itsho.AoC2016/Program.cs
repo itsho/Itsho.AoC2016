@@ -10,8 +10,6 @@ namespace Itsho.AoC2016
     {
         private static void Main(string[] args)
         {
-            /*
-
             #region Day 01
 
             Console.WriteLine("------ Day 1 ------");
@@ -102,24 +100,24 @@ namespace Itsho.AoC2016
             ConsoleWriteLineTimed("Day6 part2 ", () => Day06Solution.GetPart2(strInputDay06));
 
             #endregion Day 06
-            */
 
             #region Day 07
 
             Console.WriteLine("------ Day 7 ------");
             Console.WriteLine("Tests...");
             Tester.TestDay07Part1();
-            //Tester.TestDay07Part2();
+            Tester.TestDay07Part2();
 
             Console.WriteLine("Actual Run...");
 
             var strInputDay07 = File.ReadAllLines(@"RiddleSources\DAY07.txt");
-            ConsoleWriteLineTimed("Day7 part1 ", () => Day07Solution.GetPart1(strInputDay07));
-            //ConsoleWriteLineTimed("Day7 part2 ", () => Day07Solution.GetPart2(strInputDay07));
+            ConsoleWriteLineTimed("Day7 part1 ", () => Day07Solution.GetPart1(strInputDay07).ToString());
+            ConsoleWriteLineTimed("Day7 part2 ", () => Day07Solution.GetPart2(strInputDay07).ToString());
 
             #endregion Day 07
 
             /*
+
             #region Day 08
 
             Console.WriteLine("------ Day 8 ------");

@@ -1,6 +1,7 @@
 ﻿using Itsho.AoC2016.Solutions;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Itsho.AoC2016.Tests
 {
@@ -205,12 +206,62 @@ enarar".Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyE
 
         public static void TestDay08Part1()
         {
-            throw new NotImplementedException();
+            var strInput = "rect 3x2".Split(Environment.NewLine.ToCharArray());
+            NUnit.Framework.Assert.AreEqual(6, Day08Solution.GetPart1(strInput));
+
+            strInput = "rect 50x6".Split(Environment.NewLine.ToCharArray());
+            NUnit.Framework.Assert.AreEqual(300, Day08Solution.GetPart1(strInput));
+
+            strInput = @"rect 50x6
+rotate column x=1 by 1
+rotate row x=5 by 6
+".Split(Environment.NewLine.ToCharArray());
+            NUnit.Framework.Assert.AreEqual(300, Day08Solution.GetPart1(strInput));
+
+            strInput = @"rect 5x5
+rotate column x=1 by 1
+rotate row x=5 by 6
+".Split(Environment.NewLine.ToCharArray());
+            NUnit.Framework.Assert.AreEqual(25, Day08Solution.GetPart1(strInput));
         }
 
         public static void TestDay08Part2()
         {
-            throw new NotImplementedException();
+            var strInput = "rect 3x2".Split(Environment.NewLine.ToCharArray());
+            var strExpected =
+                "███                                               " +
+                "███                                               " +
+                "                                                  " +
+                "                                                  " +
+                "                                                  " +
+                "                                                  ";
+
+            var arrPart2Result = Day08Solution.GetPart2(strInput);
+
+            string strActualOutput =
+                arrPart2Result.Cast<char>().Aggregate(string.Empty,
+                    (current, chrSingleLED) => current + chrSingleLED);
+
+            NUnit.Framework.Assert.AreEqual(strExpected , strActualOutput);
+
+
+            strInput = @"rect 3x2
+rotate column x=1 by 1".Split(Environment.NewLine.ToCharArray());
+
+            strExpected =
+                "█ █                                               " +
+                "███                                               " +
+                " █                                                " +
+                "                                                  " +
+                "                                                  " +
+                "                                                  ";
+
+             arrPart2Result = Day08Solution.GetPart2(strInput);
+
+             strActualOutput =
+                arrPart2Result.Cast<char>().Aggregate(string.Empty,
+                    (current, chrSingleLED) => current + chrSingleLED);
+            NUnit.Framework.Assert.AreEqual(strExpected, strActualOutput);
         }
 
         public static void TestDay09Part1()
